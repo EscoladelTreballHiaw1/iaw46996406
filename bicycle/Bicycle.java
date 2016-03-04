@@ -7,7 +7,7 @@
  * See http://www.gnu.org/licenses/gpl.html for more information.
  */
 
-package bicycle;
+package iaw46996406;
 
 /**
  * Modelizes a bicycle.
@@ -17,7 +17,7 @@ package bicycle;
  * so on.
  */
 public class Bicycle {
-
+    
     /** The bicycle's model. */
     private String model;
     /** The engaged front sprocket. */
@@ -34,7 +34,7 @@ public class Bicycle {
     private final static int VMAX = 100;
     /** Increment of the bicycle speed */
     private final static int DV = 5;
-
+    
     /**
      * Constructor by default. Creates a stopped mountain bike with 3 front sprockets, 7 rear sprockets and with the
      * first front and rear sprockets engaged.
@@ -44,10 +44,10 @@ public class Bicycle {
         this.frontSprocket = 3;
         this.rearSprocket = 1;
         this.nFrontSprockets = 3;
-        this.nRearSprockets = 7;
-        this.v = 0;
+        this.nRearSprockets = 3;
+        this.v = 10;
     }
-
+    
     /**
      * Constructor. Creates a mountain bike with the first rear sprocket engaged and the last front sprocket engaged
      * 
@@ -58,12 +58,15 @@ public class Bicycle {
     public Bicycle(int nFrontSprockets, int nRearSprockets, double v) {
         this.model = "Mountain bike";
         this.nFrontSprockets = nFrontSprockets;
+        if (nRearSprockets < 3) {
+            nRearSprockets = 3;            
+        }
         this.nRearSprockets = nRearSprockets;
         this.frontSprocket = nFrontSprockets;
         this.rearSprocket = 1;
         this.v = v;
     }
-
+    
     /**
      * Constructor.
      * 
@@ -79,10 +82,13 @@ public class Bicycle {
         this.frontSprocket = frontSprocket;
         this.rearSprocket = rearSprocket;
         this.nFrontSprockets = nFrontSprockets;
+        if (nRearSprockets < 3) {
+            nRearSprockets = 3;            
+        }
         this.nRearSprockets = nRearSprockets;
         this.v = v;
     }
-
+    
     /**
      * Changes the engaged front sprocket. Increases or decreases the front sprocket by 1. The bicycle can't be stopped.
      * 
@@ -102,7 +108,7 @@ public class Bicycle {
         }
         return isChanged;
     }
-
+    
     /**
      * Changes the engaged rear sprocket. Increases or decreases the rear sprocket by 1. The bicycle can't be stopped.
      * 
@@ -122,7 +128,7 @@ public class Bicycle {
         }
         return isChanged;
     }
-
+    
     /**
      * Accelerates the bicycle.
      */
@@ -132,7 +138,7 @@ public class Bicycle {
             newV = Bicycle.VMAX;
         this.v = newV;
     }
-
+    
     /**
      * Decreases the velocity of the bicycle.
      */
@@ -142,37 +148,52 @@ public class Bicycle {
             newV = 0;
         this.v = newV;
     }
-
+    
     // Setter and getters
     public String getModel() {
         return model;
     }
-
+    
     public void setModel(String model) {
         this.model = model.trim();
     }
-
+    
     public int getRearSprocket() {
         return rearSprocket;
     }
-
+    
     public void setRearSprocket(int rearSprocket) {
+        if (rearSprocket < 0 || rearSprocket > this.nRearSprockets) {
+            System.out.print("numero de pinyo incorrecte");
+        } else {
         this.rearSprocket = rearSprocket;
+        }
     }
-
+    
     public int getFrontSprocket() {
         return frontSprocket;
     }
-
+    
     public void setFrontSprocket(int frontSprocket) {
+        if (frontSprocket < 0 || frontSprocket > this.nFrontSprockets) {
+            System.out.print("numero de pinyo incorrecte");
+        } else {
+            this.frontSprocket = frontSprocket;
+        }
         this.frontSprocket = frontSprocket;
     }
-
+    
     public double getV() {
         return v;
     }
-
+    
     public void setV(double v) {
         this.v = v;
+    }
+    public void stop() {
+        this.v = 0;
+    }
+    public void slowDown() {
+        
     }
 }
