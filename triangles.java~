@@ -45,7 +45,7 @@ public class triangles {
         return perimetre;
     }
     public double superficie() {
-        double superficie = Math.sqrt(((side1+side2+side3)*(side1+side2-side3)*(side2+side3-side1)*(side3+side1-side2))/4);
+        double superficie = math.sqrt(((side1+side2+side3)*(side1+side2-side3)*(side2+side3-side1)*(side3+side1-side2))/4);
         return superficie;
     }
 }
