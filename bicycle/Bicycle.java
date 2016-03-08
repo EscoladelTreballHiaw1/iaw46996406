@@ -7,7 +7,7 @@
  * See http://www.gnu.org/licenses/gpl.html for more information.
  */
 
-package iaw46996406;
+package bicycle;
 
 /**
  * Modelizes a bicycle.
